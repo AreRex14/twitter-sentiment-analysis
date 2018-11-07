@@ -135,8 +135,7 @@ def remove_duplicate(read_file, write_file):
     print('Done removing duplicated tweets!')
 
 if __name__ == '__main__':
-    
-    '''    
+        
     file = open('hashtags-keywords.txt', 'r') # contains a list of keywords to search and retrieve tweets
     queries = file.readlines()
 
@@ -146,7 +145,6 @@ if __name__ == '__main__':
         # read one keyword at a time
         print("----")
         get_querydata(q, 'search-data/searchTweets.csv') # comment in when not in used
-    '''
 
     print('Removing duplicated tweets...')
     remove_duplicate('search-data/searchTweets.csv', 'search-data/uniqueSearchTweets.csv') # comment in when not in used
