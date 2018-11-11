@@ -1,6 +1,4 @@
-kuistroll
+alumnikuis
 iiucs
-kolejkediamankuis
-#KUIS
-#alumnikuis
-@twt_kuis
+kuistroll
+kuisconfession

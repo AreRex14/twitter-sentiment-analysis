@@ -18,6 +18,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+twitterdev_wrapper/*.ipynb_checkpoints
 
 # Installer logs
 pip-log.txt
@@ -28,5 +29,9 @@ pip-delete-this-directory.txt
 .project
 .pydevproject
 my_config.py
-
+config.py
 *.DS_Store
+twitterdev_wrapper/credentials_handling_test.ipynb
+twitterdev_wrapper/my_twitter_keys.yaml
+twitterdev_wrapper/python_wrapper_test.ipynb
+twitterdev_wrapper/search_tweets_creds.yaml

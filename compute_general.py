@@ -4,7 +4,7 @@ compute total, positive, negative and neutral tweets
 
 import csv
 
-def getStats(fileRead):
+def getStats(fileRead, fileWrite):
     fileRead = csv.reader(open(fileRead, "r"))
 
     tot = 0
@@ -27,11 +27,13 @@ def getStats(fileRead):
     print("negative: ", neg)
     print("neutral: ", neu)
 
-    results = csv.writer(open("search-data/computedResults.csv", "w"))
+    results = csv.writer(open(fileWrite, "w"))
     results.writerow(['TextBlob and Malaya computed sentiments result'])
     results.writerow(['Total', 'Positive', 'Negative', 'Neutral'])
     results.writerow([tot, pos, neg, neu])
 
 if __name__ == '__main__':
-
-	getStats('search-data/searchTweetsSentiment.csv')
+    print('Full archive search tweets: ')
+    getStats('search-data/searchTweetsSentiment.csv', 'search-data/computedResults.csv')
+    print('30 day search tweets: ')
+    getStats('search-data/searchTweetsSentiment30days.csv', 'search-data/computedResults30days.csv')

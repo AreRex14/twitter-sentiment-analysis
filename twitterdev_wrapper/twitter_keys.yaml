@@ -1,0 +1,22 @@
+search_tweets_30_day_dev:
+  account_type: premium
+  endpoint: <FULL_URL_OF_ENDPOINT>
+  consumer_key: <KEY>
+  consumer_secret: <SECRET>
+  (optional) bearer_token: <TOKEN>
+
+
+search_tweets_30_day_prod:
+  account_type: premium
+  endpoint: <FULL_URL_OF_ENDPOINT>
+  bearer_token: <TOKEN>
+
+search_tweets_fullarchive_dev:
+  account_type: premium
+  endpoint: <FULL_URL_OF_ENDPOINT>
+  bearer_token: <TOKEN>
+
+search_tweets_fullarchive_prod:
+  account_type: premium
+  endpoint: <FULL_URL_OF_ENDPOINT>
+  bearer_token: <TOKEN>

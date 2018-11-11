@@ -9,6 +9,7 @@ import socket
 
 # import malay language toolkit and pandas
 import malaya
+# import pandas as pd
 
 multinomial = malaya.multinomial_detect_languages()
 bayes_sentiment = malaya.pretrained_bayes_sentiment()
@@ -143,5 +144,7 @@ def analyze_querydata(read_file, write_file):
     print("Done building tweets sentiment!")
 			
 if __name__ == '__main__':
-
+    print('Processing sentiments for full archive search tweets...')
     analyze_querydata('search-data/normalizedSearchTweets.csv', 'search-data/searchTweetsSentiment.csv')
+    print('Processing sentiments for 30 day search tweets...')
+    analyze_querydata('search-data/normalizedSearchTweets30days.csv', 'search-data/searchTweetsSentiment30days.csv')
