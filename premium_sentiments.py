@@ -9,7 +9,7 @@ import socket
 
 # import malay language toolkit and pandas
 import malaya
-# import pandas as pd
+# need to use pandas for in-depth analysis
 
 multinomial = malaya.multinomial_detect_languages()
 bayes_sentiment = malaya.pretrained_bayes_sentiment()

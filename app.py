@@ -67,7 +67,7 @@ def analyse():
             pass
             
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000) # change to production if ready
+    app.run(host='127.0.0.1', port=5000)
 
 # handle http error 503 problem, problem might come from python urllib, requests or textblob
 # deactivate anything that would disturb the connection/request, antivirus, firewall and so on

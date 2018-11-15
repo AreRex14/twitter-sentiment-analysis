@@ -1,14 +1,14 @@
 import csv
 from searchtweets import ResultStream, gen_rule_payload, load_credentials, collect_results
 
-'''
-premium_search_args = load_credentials("./twitter_keys.yaml",
-                                       yaml_key="search_tweets_fullarchive_dev",
-                                       env_overwrite=False)
-'''
+# uncomment below lines of code for full archive prod
+# premium_search_args = load_credentials("./twitter_keys.yaml",
+#                                       yaml_key="search_tweets_fullarchive_prod",
+#                                       env_overwrite=False)
 
+# comment premium_search_args below if you uncomment above codes
 premium_search_args = load_credentials("./twitter_keys.yaml",
-                                       yaml_key="search_tweets_30day_dev",
+                                       yaml_key="search_tweets_30day_prod",
                                        env_overwrite=False)
 
 filename = ""
@@ -57,7 +57,7 @@ def get_querydata(query, write_file):
 
 if __name__ == '__main__':
         
-    file = open('../hashtags-keywords.txt', 'r') # contains a list of keywords to search and retrieve tweets
+    file = open('./hashtags-keywords.txt', 'r') # contains a list of keywords to search and retrieve tweets
     queries = file.readlines()
 
     # execute below scripts will run again the operations and overwrite existing files
@@ -65,4 +65,4 @@ if __name__ == '__main__':
     for q in queries:
         # read one keyword at a time
         print("----")
-        get_querydata(q, '../search-data/searchTweets30days.csv') # comment in when not in used
+        get_querydata(q, './search-data/searchTweets30days.csv') # comment in when not in used

@@ -1,5 +1,3 @@
-# from config import api 
-# import tweepy
 import csv
 import time
 # to handle regex
@@ -11,50 +9,6 @@ import malaya
 # global variables to be used by user defined functions
 filename = ""
 filename2 = ""
-
-'''
-# 1. collecting data
-#Put your search term
-def get_querydata(query, named_file):
-    searchquery = query
-    tweets = tweepy.Cursor(api.search,q=searchquery, locale='ms', count=5000).items()
-
-    count = 0
-    errorCount= 0
-    msg = ""
-    filename = named_file
-    # edit to create a new file if not exist without messing with the writer pointer
-    with open(filename, 'a', newline='') as alltweets: 
-        writer = csv.writer(alltweets)
-        while True:
-            try:
-                tweet = next(tweets)
-                count += 1
-                # use count-break during dev to avoid twitter restrictions
-                if (count == 5000):
-                   break
-            except tweepy.TweepError:
-                #catches TweepError when rate limiting occurs, sleeps, then restarts.
-                #nominally 15 minnutes, make a bit longer to avoid attention.
-                msg = "sleeping...."
-                print(msg)
-                time.sleep(60*16)
-
-                tweet = next(tweets)
-            except StopIteration:
-                break
-            try:
-                msg = "Writing to CSV tweet number:"+str(count)
-                print(msg)
-                writer.writerow([tweet.created_at, tweet.text])  
-            except UnicodeEncodeError:
-                errorCount += 1
-                msg = "UnicodeEncodeError,errorCount ="+str(errorCount)
-                print(msg)
-
-    msg = "completed, errorCount ="+str(errorCount)+" total tweets="+ str(count)
-    print(msg)
-'''
 
 def clean_data(read_file, write_file):
 
@@ -136,19 +90,6 @@ def remove_duplicate(read_file, write_file):
 
 if __name__ == '__main__':
 
-    '''
-        
-    file = open('hashtags-keywords.txt', 'r') # contains a list of keywords to search and retrieve tweets
-    queries = file.readlines()
-
-    # execute below scripts will run again the operations and overwrite existing files
-    print('Getting tweets data based on keywords file...')
-    for q in queries:
-        # read one keyword at a time
-        print("----")
-        get_querydata(q, 'search-data/searchTweets.csv') # comment in when not in used
-
-    '''
     print('Full archive tweets operations...')
     print('Removing duplicated tweets...')
     remove_duplicate('search-data/searchTweets.csv', 'search-data/uniqueSearchTweets.csv') # comment in when not in used
