@@ -13,14 +13,18 @@
 </div>
 
 <div class="container">
-		<form method="POST" action="{{ url_for('analyse')}}" id="myForm">
-			<label>Enter Your Text Below</label>
-			<textarea class="form-control" rows="3" cols="2" name="rawtext"></textarea>
-			<input type="submit" onclick="myAnalyser()" value="Submit" class="btn btn-primary">
-			<input type="button" onclick="myFunction()" value="Clear" class="btn btn-outline-dark">
+	<h2>Full Archive Tweets Search: </h2>
+	<img src="{{url_for('static', filename='full_archive.png')}}" />
+	<h2>30 Day Tweets Search: </h2>
+	<img src="{{url_for('static', filename='30_day.png')}}" />
+	<form method="POST" action="{{ url_for('analyse')}}" id="myForm">
+		<label>Enter Your Text Below</label>
+		<textarea class="form-control" rows="3" cols="2" name="rawtext"></textarea>
+		<input type="submit" onclick="myAnalyser()" value="Submit" class="btn btn-primary">
+		<input type="button" onclick="myFunction()" value="Clear" class="btn btn-outline-dark">
 
-			<a href="{{ url_for('index')}}" type="button" class="btn btn-danger" >Reset</a>
-		</form>
+		<a href="{{ url_for('index')}}" type="button" class="btn btn-danger" >Reset</a>
+	</form>
 </div>
 <br />
 <hr />
@@ -37,7 +41,8 @@
 				<div class="card-text">
 					<h5>Status</h5>
 					<p style="color:#0091EA; font-family:sans-serif;">{{ status }}</p>
-					<h5>Your Text</h5>
+					<!-- <h5>Your Text</h5> -->
+					<h5>Text translated to English: </h5>
 					<p style="color:#0091EA; font-family:sans-serif;">{{ received_text }}</p>
 					<hr/>
 					<br/>
