@@ -1,10 +1,9 @@
 # kuis-twitter-sentiment-analysis
-This is a project on twitter sentiment analysis of KUIS/IIUCS alumni on the institution that they had studied.
 
 This project has two parts:
-1. cli operation that write or both read and write to/from a csv file
-2. a NLP Flask app that do a single operation and output several informations regarding the text inserted
+1. Cli operation that write or both read and write to/from a csv file for standard(free), 30 day(premium sandbox) and full archive(premium sandbox) Twitter Search API endpoints
+2. A NLP Flask app that visualize sentiments of 30 day and full archive and has a section where paragraphs of strings(tweet or else) can be input and output several informations(sentiment, subjectivity, ...) regarding the strings inserted
 
-This project basically uses [_TwitterAPI_](https://github.com/twitterdev/search-tweets-python) to retrieve tweets and _TextBlob_ and _Malaya_ for NLP purpose.
+This project basically uses _Tweepy_ to access standard search API and [_TwitterAPI_](https://github.com/twitterdev/search-tweets-python) to access premium search API endpoint and retrieve tweets and _TextBlob_ and _Malaya_ for NLP purpose.
 
 Refer to [wiki](https://github.com/AreRex14/kuis-twitter-sentiment-analysis/wiki) to set up.
