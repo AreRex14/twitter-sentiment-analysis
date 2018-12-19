@@ -14,11 +14,11 @@ def getStats(fileRead, fileWrite):
 
     for row in fileRead:
         tot = tot + 1;
-        if row[6] == "positive":
+        if row[4] == "positive":
             pos = pos + 1
-        elif row[6] == "negative":
+        elif row[4] == "negative":
             neg = neg + 1
-        elif row[6] == "neutral":
+        elif row[4] == "neutral":
             neu = neu + 1
 
     print("total tweets: ", tot)
@@ -33,7 +33,13 @@ def getStats(fileRead, fileWrite):
     results.writerow([tot, pos, neg, neu])
 
 if __name__ == '__main__':
-    print('Full archive search tweets: ')
-    getStats('search-data/searchTweetsSentiment.csv', 'search-data/computedResults.csv')
-    print('30 day search tweets: ')
-    getStats('search-data/searchTweetsSentiment30days.csv', 'search-data/computedResults30days.csv')
+
+    print("This python script will generally compute tweets based on sentiment type.")
+    # need to handle other user io operations(file not existed, or not extensions and else...)
+    confirmation = input("Executing this script will overwrite existing data in file if the operation has been done before, proceed with caution. y/n: ")
+    if confirmation == 'y':
+        read_file = input("Please input a csv file to read tweets from: ")
+
+        getStats('search-data/'+read_file, 'search-data/computed'+read_file)
+    else:
+        print("You said no. Thank you")
