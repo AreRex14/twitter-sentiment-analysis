@@ -1,14 +1,8 @@
 import csv
 import time
-# to handle regex
 import re
 # need to handle blank separator row
-# malay language toolkit
 import malaya
-
-# global variables to be used by user defined functions
-filename = ""
-filename2 = ""
 
 def clean_data(read_file, write_file):
 
@@ -16,15 +10,9 @@ def clean_data(read_file, write_file):
     errorCount= 0
     msg = ""
 
-    filename = read_file
-    filename2 = write_file
-
-    alltweets = csv.reader(open(filename, 'r'))
-    # n = sum(1 for line in csv.reader(filename)) # not working
-    # print(str(n))
-
+    alltweets = csv.reader(open(read_file, 'r'))
     
-    with open(filename2, 'w', newline='') as cleantweets:
+    with open(write_file, 'w', newline='') as cleantweets:
         writer = csv.writer(cleantweets)
         # while True:
         for row in alltweets:
@@ -37,19 +25,16 @@ def clean_data(read_file, write_file):
     cleantweets.close()
     print('Done cleaning tweets!')
 
-# read clean tweets file and write to normalized tweets file
 def normalize_string(read_file, write_file):
     count = 0
     errorCount= 0
     msg = ""
-    filename = read_file
-    filename2 = write_file
 
-    alltweets = csv.reader(open(filename, 'r', encoding="utf8", errors='ignore'))
+    alltweets = csv.reader(open(read_file, 'r', encoding="utf8", errors='ignore'))
 
     multinomial = malaya.multinomial_detect_languages()
 
-    with open(filename2, 'w', newline='') as normalizedtweets:
+    with open(write_file, 'w', newline='') as normalizedtweets:
         writer = csv.writer(normalizedtweets)
         # while True:
         for row in alltweets:
@@ -67,8 +52,6 @@ def normalize_string(read_file, write_file):
 def remove_duplicate(read_file, write_file):
     errorCount= 0
     msg = ""
-    filename = read_file
-    filename2 = write_file
 
     alltweets = csv.reader(open(read_file, 'r'))
     noDup = csv.writer(open(write_file, 'w'))
@@ -90,22 +73,15 @@ def remove_duplicate(read_file, write_file):
 
 if __name__ == '__main__':
 
-    print('Full archive tweets operations...')
-    print('Removing duplicated tweets...')
-    remove_duplicate('search-data/searchTweets.csv', 'search-data/uniqueSearchTweets.csv') # comment in when not in used
+    print("This python script will remove duplicated tweets, cleaning tweets and normalizing tweets.")
+    # need to handle other user io operations(file not existed, or not extensions and else...)
+    confirmation = input("Executing this script will overwrite existing data in file if the operation has been done before, proceed with caution. y/n: ")
+    if confirmation == 'y':
+        read_file = input("Please input a csv file to read tweets from: ")
 
-    print('Cleaning tweets...')
-    clean_data('search-data/uniqueSearchTweets.csv', 'search-data/cleanSearchTweets.csv') # comment in when not in used
-
-    print('Normalizing tweets...')
-    normalize_string('search-data/cleanSearchTweets.csv', 'search-data/normalizedSearchTweets.csv') # comment in when not in used
-
-    print('30 day tweets operations...')
-    print('Removing duplicated tweets...')
-    remove_duplicate('search-data/searchTweets30days.csv', 'search-data/uniqueSearchTweets30days.csv') # comment in when not in used
-
-    print('Cleaning tweets...')
-    clean_data('search-data/uniqueSearchTweets30days.csv', 'search-data/cleanSearchTweets30days.csv') # comment in when not in used
-
-    print('Normalizing tweets...')
-    normalize_string('search-data/cleanSearchTweets30days.csv', 'search-data/normalizedSearchTweets30days.csv') # comment in when not in used
+        remove_duplicate('search-data/'+read_file, 'search-data/unique'+read_file)
+        clean_data('search-data/unique'+read_file, 'search-data/clean'+read_file) 
+        normalize_string('search-data/clean'+read_file, 'search-data/normalized'+read_file) 
+    else:
+        print("You said no. Thank you")
+	
